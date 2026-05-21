@@ -42,3 +42,10 @@ class WindowsPage(BasePage):
 
     def get_page_source(self):
         return self.driver.page_source
+
+
+    def wait_for_header(self):
+        # Чекаємо, поки на новій сторінці з'явиться заголовок h3
+        from selenium.webdriver.common.by import By
+        from selenium.webdriver.support import expected_conditions as EC
+        return self.wait.until(EC.visibility_of_element_located((By.TAG_NAME, "h3")))
